@@ -6,6 +6,11 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    colors: {
+      'background-dark': '#191414',
+      'white': '#ffffff',
+      'accent': '#1DB954',
+    },
   },
   plugins: [],
 }

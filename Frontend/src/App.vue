@@ -1,7 +1,18 @@
-<script setup lang="ts">
+<template>
+
+  <Home></Home>
+
+</template>
+
+<script lang="ts">
+import Home from './components/Home.vue'
+
+export default{
+    name: "App",
+    components: {
+        Home
+    }
+}
+
 
 </script>
-
-<template>
-  <div>hi</div>
-</template>

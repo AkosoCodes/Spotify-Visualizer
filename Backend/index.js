@@ -77,21 +77,16 @@ app.get('/callback', (req, res) => {
 
       if (response.status === 200) {
 
-        const { access_token, token_type } = response.data;
+        const { access_token, refresh_token } = response.data;
+        const queryParams = querystring.stringify({
+          access_token,
+          refresh_token
+        })
 
-        const { refresh_token } = response.data;
-
-        axios.get(`http://localhost:8888/refresh_token?refresh_token=${refresh_token}`)
-          .then(response => {
-            console.log(response.data);
-            res.send(`<pre>${JSON.stringify(response.data)}</pre>`);
-          })
-          .catch(error => {
-            res.send(error);
-          });
+        res.redirect(`http://localhost:3000/?${queryParams}`);
 
       } else {
-        res.send(response);
+        res.redirect(`/?${querystring.stringify({ error: 'invalid_token' })}`);
       }
     })
     .catch(error => {
