@@ -24,5 +24,12 @@
     let accessToken = urlParams.get('access_token');
     let refreshToken = urlParams.get('refresh_token');
 
+    if(refreshToken){
+        fetch(`/refresh_token?refresh_token=${refreshToken}`)
+        .then(response => response.json())
+        .then(data => { console.log(data) })
+        .catch(err => console.log(err))
+    }
+
 
 </script>
