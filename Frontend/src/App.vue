@@ -30,15 +30,27 @@
 <script>
 
 import { accessToken, logout, getCurrentUserProfile } from './spotify.js'
+import { catchErrors } from './utils.js'
 
 let token = accessToken;
 let profile = await getCurrentUserProfile;
+
+
+const fetchData = async () => {
+    const {data} = await getCurrentUserProfile();
+    let profile = data;  
+}
+
+if(token){
+  catchErrors(fetchData());
+}
 
 export default {
   name: 'App',
   data() {
     return {
-      token: token
+      token: token,
+      profile: profile
     }
   },
   methods: {
