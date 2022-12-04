@@ -1,29 +1,26 @@
 <template>
 
-  <Navbar/> 
+  <Home v-if="!token"></Home>
 
-  <div class="text-center text-accent my-20 text-5xl">Vue + Spotify App</div>
+  <div v-else>
 
-  <div v-if="!token" class="text-center">
+    <Navbar/> 
 
-    <button class="text-accent bg-white p-5 bg-opacity-0 hover:bg-opacity-30" @click="login">
-      <a href="http://localhost:8888/login">Login with Spotify</a>
-    </button>
-
-  </div>
-
-
-  <div v-else class="text-center">
-
-    <div class="text-accent">Logged in!</div>
-
-    <button class="text-accent bg-white p-5 bg-opacity-0 hover:bg-opacity-30" @click="store.logoutUser()">
-      Logout
-    </button>
+    <div class="text-center">
+  
+      <div class="text-accent font-[Circular-Bold]">Logged in!</div>
+  
+      <button class="text-accent bg-white p-5 bg-opacity-0 hover:bg-opacity-30" @click="store.logoutUser()">
+        Logout
+      </button>
+  
+    </div>
 
   </div>
 
-  <Home></Home>
+
+
+  
 
 </template>
 

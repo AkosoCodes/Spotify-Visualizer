@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
+@font-face {
+    font-family: Circular-Book;
+    src: url('./assets/fonts/Circular/CircularStd-Book.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Circular-Medium;
+    src: url('./assets/fonts/Circular/CircularStd-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Circular-Bold;
+    src: url('./assets/fonts/Circular/CircularStd-Bold.ttf') format('truetype');
+}
+
+* {
+    font-family: Circular-Book;
+    margin: 0;
+    padding: 0;
     background-color: #191414;
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
