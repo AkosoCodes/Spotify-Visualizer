@@ -21,6 +21,16 @@
     font-family: Circular-Book;
     margin: 0;
     padding: 0;
-    background-color: #191414;
+    background-color: #181818;
     transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+h1{
+    font-family: Circular-Bold;
+    font-size: 50px;
+    color: #fff;
+}
+
+#bold {
+    font-family: Circular-Bold;
 }

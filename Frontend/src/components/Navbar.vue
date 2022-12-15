@@ -1,90 +1,87 @@
 <script>
+import { ref } from 'vue'
 
-import { useUserStore } from '../stores/UserStore.js'
-import { storeToRefs } from 'pinia'
-import { catchErrors } from '../utils.js'
+let notActiveClass = "bg-black h-[70px] w-full text-center flex flex-col justify-center text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent";
+
+let activeClass = "bg-accent h-[70px] w-full text-center flex flex-col justify-center text-white fill-white";
+
+const isActive = ref(false)
+
 
 export default {
     name: 'Navbar',
     setup() {
-
-        const store = useUserStore();
-        const { token, profile } = storeToRefs(store);
-
-        console.log(profile);
-
-        if (token) {
-            catchErrors(store.fetchProfile());
-        }
-
         return {
-            profile,
-            token,
-            store,
+
+            activeClass,
+            notActiveClass,
         }
     },
     methods: {
-        logout() {
-            this.store.logoutUser();
+        ToggleActive(){
+            isActive.value = !isActive.value
         },
     },
 
 }
 
+
+
+
 </script>
 
 <template>
 
-    <div class="flex justify-between my-5 px-10">
-        <a href="https://open.spotify.com/" target="_blank">
-            <img class="w-[200px]" src="../assets/logos/Spotify_Logo_Green.png" alt="Spotify Logo">
-        </a>
-
-        <div class="flex justify-around">
-
-            <div class="flex justify-around">
-
-                <button class="text-white px-5 bg-white bg-opacity-0 hover:bg-opacity-30 mx-2" @click="logout">
-                    
-                    <a class="text-white px-5 hover:text-accent" :href=profile.uri target="_blank">
-                        Welcome, {{ profile?.display_name }}!
-                    </a>
-                </button>
-
-                <button class="text-white px-5 bg-white bg-opacity-0 hover:bg-opacity-30 mx-2" @click="logout">
-                    LOGOUT
-                </button>
-
-            </div>
-        </div>
-    </div>
-
-
     <!-- Side Nav-Bar -->
-    <div>
-        <!-- <div class="w-[50px]">
-            <img src="../assets/icons/Spotify_Icon_Green.png" alt="Spotify_Logo">
-        </div> -->
+    <div class="bg-black fixed flex flex-col top-0 left-0 z-10 min-h-[100vh] justify-between w-[120px] shadow-med">
+
+        <!-- Spotify Icon -->
+        <div class=" w-[50px] mx-auto mt-[30px]">
+            <a href="https://open.spotify.com/" target="_blank">
+                <img class="bg-current" src="../assets/icons/Spotify_Icon_Green.png" alt="Spotify_Logo">
+            </a>
+        </div>
+
+
+        <ul class="flex flex-col">
+            <li :class="`${isActive.value ? activeClass : notActiveClass}`">
+                <button class="bg-inherit" @click="ToggleActive()">
+                    <div class="mx-auto my-auto bg-inherit ">
+                        <div class="w-[25px] mx-auto bg-inherit">
+                            <svg class="bg-inherit" viewBox="0 0 1024 1024"><path d="m730.06 679.64q-45.377 53.444-101.84 83.443t-120 29.999q-64.032 0-120.75-30.503t-102.6-84.451q-40.335 13.109-77.645 29.747t-53.948 26.722l-17.142 10.084q-29.747 19.159-51.175 57.729t-21.428 73.107 25.461 59.242 60.754 24.705h716.95q35.293 0 60.754-24.705t25.461-59.242-21.428-72.603-51.679-57.225q-6.554-4.033-18.907-10.84t-51.427-24.453-79.409-30.755zm-221.84 25.72q-34.285 0-67.561-14.873t-60.754-40.335-51.175-60.502-40.083-75.124-25.461-84.451-9.075-87.728q0-64.032 19.915-116.22t54.452-85.964 80.67-51.931 99.072-18.151 99.072 18.151 80.67 51.931 54.452 85.964 19.915 116.22q0 65.04-20.167 130.58t-53.948 116.72-81.426 83.443-98.568 32.268z"></path></svg>
+                        </div>
+                        
+                        Profile
+                    </div>
+
+                </button>
+            </li>
+            <li id="playlist" class="bg-black h-[70px] w-full text-center flex flex-col justify-center text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent">
+                <button class="bg-inherit" @click="isActive('playlist')">
+                    <div class="mx-auto my-auto bg-inherit ">
+                        <div class="w-[25px] mx-auto bg-inherit">
+                            <svg class="bg-inherit" viewBox="0 0 1024 1024"><path d="m730.06 679.64q-45.377 53.444-101.84 83.443t-120 29.999q-64.032 0-120.75-30.503t-102.6-84.451q-40.335 13.109-77.645 29.747t-53.948 26.722l-17.142 10.084q-29.747 19.159-51.175 57.729t-21.428 73.107 25.461 59.242 60.754 24.705h716.95q35.293 0 60.754-24.705t25.461-59.242-21.428-72.603-51.679-57.225q-6.554-4.033-18.907-10.84t-51.427-24.453-79.409-30.755zm-221.84 25.72q-34.285 0-67.561-14.873t-60.754-40.335-51.175-60.502-40.083-75.124-25.461-84.451-9.075-87.728q0-64.032 19.915-116.22t54.452-85.964 80.67-51.931 99.072-18.151 99.072 18.151 80.67 51.931 54.452 85.964 19.915 116.22q0 65.04-20.167 130.58t-53.948 116.72-81.426 83.443-98.568 32.268z"></path></svg>
+                        </div>
+                        
+                        Playlist
+                    </div>
+
+                </button>
+            </li>
+
+
+        </ul>
 
         <!-- GitHub Icon -->
-        <div class="fill-white w-[50px]">
+        <div class="fill-gray w-[40px] mx-auto mb-[30px] hover:fill-white">
 
-            <a href="https://github.com/AkosoCodes/Spotify-App" target="_blank"></a>
-
-            <svg viewBox="0 0 24 24"><path d="M10.9,2.1c-4.6,0.5-8.3,4.2-8.8,8.7c-0.5,4.7,2.2,8.9,6.3,10.5C8.7,21.4,9,21.2,9,20.8v-1.6c0,0-0.4,0.1-0.9,0.1c-1.4,0-2-1.2-2.1-1.9c-0.1-0.4-0.3-0.7-0.6-1C5.1,16.3,5,16.3,5,16.2C5,16,5.3,16,5.4,16c0.6,0,1.1,0.7,1.3,1c0.5,0.8,1.1,1,1.4,1c0.4,0,0.7-0.1,0.9-0.2c0.1-0.7,0.4-1.4,1-1.8c-2.3-0.5-4-1.8-4-4c0-1.1,0.5-2.2,1.2-3C7.1,8.8,7,8.3,7,7.6c0-0.4,0-0.9,0.2-1.3C7.2,6.1,7.4,6,7.5,6c0,0,0.1,0,0.1,0C8.1,6.1,9.1,6.4,10,7.3C10.6,7.1,11.3,7,12,7s1.4,0.1,2,0.3c0.9-0.9,2-1.2,2.5-1.3c0,0,0.1,0,0.1,0c0.2,0,0.3,0.1,0.4,0.3C17,6.7,17,7.2,17,7.6c0,0.8-0.1,1.2-0.2,1.4c0.7,0.8,1.2,1.8,1.2,3c0,2.2-1.7,3.5-4,4c0.6,0.5,1,1.4,1,2.3v2.6c0,0.3,0.3,0.6,0.7,0.5c3.7-1.5,6.3-5.1,6.3-9.3C22,6.1,16.9,1.4,10.9,2.1z"/></svg>
+            <a  href="https://github.com/AkosoCodes/Spotify-App" target="_blank">
+                <svg class="bg-current" viewBox="0 0 24 24"><path d="M10.9,2.1c-4.6,0.5-8.3,4.2-8.8,8.7c-0.5,4.7,2.2,8.9,6.3,10.5C8.7,21.4,9,21.2,9,20.8v-1.6c0,0-0.4,0.1-0.9,0.1c-1.4,0-2-1.2-2.1-1.9c-0.1-0.4-0.3-0.7-0.6-1C5.1,16.3,5,16.3,5,16.2C5,16,5.3,16,5.4,16c0.6,0,1.1,0.7,1.3,1c0.5,0.8,1.1,1,1.4,1c0.4,0,0.7-0.1,0.9-0.2c0.1-0.7,0.4-1.4,1-1.8c-2.3-0.5-4-1.8-4-4c0-1.1,0.5-2.2,1.2-3C7.1,8.8,7,8.3,7,7.6c0-0.4,0-0.9,0.2-1.3C7.2,6.1,7.4,6,7.5,6c0,0,0.1,0,0.1,0C8.1,6.1,9.1,6.4,10,7.3C10.6,7.1,11.3,7,12,7s1.4,0.1,2,0.3c0.9-0.9,2-1.2,2.5-1.3c0,0,0.1,0,0.1,0c0.2,0,0.3,0.1,0.4,0.3C17,6.7,17,7.2,17,7.6c0,0.8-0.1,1.2-0.2,1.4c0.7,0.8,1.2,1.8,1.2,3c0,2.2-1.7,3.5-4,4c0.6,0.5,1,1.4,1,2.3v2.6c0,0.3,0.3,0.6,0.7,0.5c3.7-1.5,6.3-5.1,6.3-9.3C22,6.1,16.9,1.4,10.9,2.1z"/></svg>
+                </a>
         </div>
+            
 
-        <div id="menu">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
 
-        <div id="git">
-
-        </div>
     </div>
 
 

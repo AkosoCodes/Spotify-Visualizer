@@ -2,19 +2,10 @@
 
   <Home v-if="!token"></Home>
 
-  <div v-else>
+  <div v-else class="ml-[120px]">
 
     <Navbar/> 
-
-    <div class="text-center">
-  
-      <div class="text-accent font-[Circular-Bold]">Logged in!</div>
-  
-      <button class="text-accent bg-white p-5 bg-opacity-0 hover:bg-opacity-30" @click="store.logoutUser()">
-        Logout
-      </button>
-  
-    </div>
+    <Profile />
 
   </div>
 
@@ -28,6 +19,7 @@
 
 import Home from './components/Home.vue';
 import Navbar from './components/Navbar.vue';
+import Profile from './components/Profile.vue';
 
 import { useUserStore } from './stores/UserStore.js'
 import { storeToRefs } from 'pinia'
@@ -39,14 +31,17 @@ export default {
   setup() {
 
     const store = useUserStore();
-    const { token, profile } = storeToRefs(store);
+    const { token, profile, playlists } = storeToRefs(store);
 
     if(token){
       catchErrors(store.fetchProfile());
     }
 
+    console.log(token)
+
     return {
       profile,
+      playlists,
       token,
       store,
     }
@@ -59,7 +54,7 @@ export default {
   components: {
     Home,
     Navbar,
-
+    Profile,
   },
 }
 
