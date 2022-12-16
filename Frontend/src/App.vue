@@ -37,7 +37,7 @@ export default {
       catchErrors(store.fetchProfile());
     }
 
-    console.log(token)
+    console.log("This is the token:", token)
 
     return {
       profile,

@@ -42,11 +42,6 @@ export default {
             </li>
 
         </ul>
-        <div class="bg-test">
-            <div class="">
-                
-            </div>
-        </div>
     </div>
 
     <button @click="logout">Log out</button>

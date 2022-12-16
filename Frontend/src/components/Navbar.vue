@@ -1,26 +1,12 @@
 <script>
-import { ref } from 'vue'
-
-let notActiveClass = "bg-black h-[70px] w-full text-center flex flex-col justify-center text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent";
-
-let activeClass = "bg-accent h-[70px] w-full text-center flex flex-col justify-center text-white fill-white";
-
-const isActive = ref(false)
-
 
 export default {
     name: 'Navbar',
     setup() {
         return {
-
-            activeClass,
-            notActiveClass,
         }
     },
     methods: {
-        ToggleActive(){
-            isActive.value = !isActive.value
-        },
     },
 
 }
@@ -44,7 +30,7 @@ export default {
 
 
         <ul class="flex flex-col">
-            <li :class="`${isActive.value ? activeClass : notActiveClass}`">
+            <li>
                 <button class="bg-inherit" @click="ToggleActive()">
                     <div class="mx-auto my-auto bg-inherit ">
                         <div class="w-[25px] mx-auto bg-inherit">
