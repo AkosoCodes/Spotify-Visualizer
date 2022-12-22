@@ -15,12 +15,21 @@
 
 <script lang="ts">
 
+import { useUserStore } from '../stores/UserStore.js'
+import { storeToRefs } from 'pinia'
+
+
 export default {
     name: 'Home',
     setup() {
+        const store = useUserStore();
+        const { token } = storeToRefs(store);
+        
         return {
-            
-        }
+            store,
+            token,        }
+    },
+    methods: {
     }
 }
 

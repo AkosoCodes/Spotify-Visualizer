@@ -1,11 +1,11 @@
 <template>
 
-  <Home v-if="!token"></Home>
+  <Home v-if="!status"></Home>
 
   <div v-else class="ml-[120px]">
 
     <Navbar/> 
-    <Profile />
+    <Profile/>
 
   </div>
 
@@ -20,6 +20,7 @@
 import Home from './components/Home.vue';
 import Navbar from './components/Navbar.vue';
 import Profile from './components/Profile.vue';
+import {ref} from 'vue'
 
 import { useUserStore } from './stores/UserStore.js'
 import { storeToRefs } from 'pinia'
@@ -33,17 +34,18 @@ export default {
     const store = useUserStore();
     const { token, profile, playlists } = storeToRefs(store);
 
+    let status = store.isLoggedIn;
+
     if(token){
       catchErrors(store.fetchProfile());
     }
-
     console.log("This is the token:", token)
 
     return {
       profile,
       playlists,
-      token,
       store,
+      status,
     }
   },
   methods: {

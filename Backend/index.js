@@ -12,7 +12,7 @@ const REDIRECT_URI = process.env.REDIRECT_URI;
 
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Hello World! This is the backend.');
 });
 
 
