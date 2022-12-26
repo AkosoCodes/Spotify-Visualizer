@@ -38,7 +38,7 @@ const stateKey = 'spotify_auth_state';
 app.get('/login', (req, res) => {
 
   const state = generateRandomString(16);
-  const scope = 'user-read-private user-read-email';
+  const scope = 'user-read-private user-read-email user-top-read';
 
   const queryParams = querystring.stringify({
     response_type: 'code',

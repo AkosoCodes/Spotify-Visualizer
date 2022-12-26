@@ -30,14 +30,14 @@ export default {
         <img class="rounded-full shadow-circle w-[250px]" :src="profile.images[0].url" v-if="profile.images !== undefined" alt="profile picture">
         <h1 class="text-center hover:text-accent cursor-pointer"><a id="bold" :href="profile.href">{{profile.display_name}}</a></h1>
 
-        <ul class="flex">
-            <li class="flex flex-col">
-                <span class="text-center" v-if="profile.followers !== undefined">{{profile.followers.total}}</span>
-                <span>Followers</span>
+        <ul class="flex justify-center">
+            <li class="flex flex-col mx-5">
+                <span class="text-gray">Followers</span>
+                <span class="text-center text-white" v-if="profile.followers !== undefined">{{profile.followers.total}}</span>
             </li>
-            <li class="flex flex-col">
-                <span class="text-center" v-if="playlists.total !== undefined">{{playlists.total}}</span>
-                <span>Playlists</span>
+            <li class="flex flex-col mx-5">
+                <span class="text-gray">Playlists</span>
+                <span class="text-center text-white">{{playlists.total}}</span>
             </li>
 
         </ul>

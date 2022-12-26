@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-import { accessToken, logout, getCurrentUserProfile, getCurrentUserPlaylists } from '../spotify.js'
+import { accessToken, logout, getCurrentUserProfile, getCurrentUserPlaylists, getTopArtistsLong, getTopArtistsMedium, getTopArtistsShort} from '../spotify.js'
 import { catchErrors } from '../utils.js'
 
 let isLoggedIn = accessToken ? true : false;
@@ -8,6 +8,7 @@ let isLoggedIn = accessToken ? true : false;
 let token = accessToken;
 let profile = await getCurrentUserProfile;
 let playlists = await getCurrentUserPlaylists;
+let topArtists = await getTopArtistsShort;
 
 export const useUserStore = defineStore('UserStore', {
 
@@ -17,6 +18,7 @@ export const useUserStore = defineStore('UserStore', {
             token: token,
             playlists: playlists,
             isLoggedIn: isLoggedIn,
+            topArtists: topArtists,
         }
     },
     getters: {
@@ -29,13 +31,16 @@ export const useUserStore = defineStore('UserStore', {
             logout();
             this.token = null;
         },
+
         async fetchProfile(){
-            const {ProfileData} = await getCurrentUserProfile();
-            this.profile = ProfileData;
+            const userProfile = await getCurrentUserProfile();
+            this.profile = userProfile.data;
 
-            const {PlaylistsData} = await getCurrentUserPlaylists();
-            this.playlists = PlaylistsData; 
+            const userPlaylist = await getCurrentUserPlaylists();
+            this.playlists = userPlaylist.data; 
 
+            const userTopArtist = await getTopArtistsShort();
+            this.topArtists = userTopArtist.data;
 
         },
     }
