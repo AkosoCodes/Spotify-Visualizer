@@ -1,22 +1,5 @@
 <script>
 
-
-let activeTab
-
-export default {
-    name: 'Navbar',
-    setup() {
-        return {
-        }
-    },
-    methods: {
-    },
-
-}
-
-
-
-
 </script>
 
 <template>
@@ -35,8 +18,7 @@ export default {
         <ul class="flex flex-col">
 
             <!-- Profile -->
-            <li
-                class="bg-black h-[70px] w-full text-center flex flex-col justify-center text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent">
+            <li class="bg-black h-[70px] w-full text-center flex flex-col justify-center text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent">
 
                 <router-link to="/profile" custom v-slot="{ navigate }">
                     <button class="bg-inherit" @click="navigate" role="link">
@@ -56,8 +38,7 @@ export default {
             </li>
 
             <!-- Top Artists -->
-            <li
-                class="bg-black h-[70px] w-full text-center flex flex-col justify-center text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent">
+            <li class="bg-black h-[70px] w-full text-center flex flex-col justify-center text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent">
                 <router-link to="/topArtists" custom v-slot="{ navigate }">
                     <button class="bg-inherit" @click="navigate" role="link">
                         <div class="mx-auto my-auto bg-inherit text-sm">
