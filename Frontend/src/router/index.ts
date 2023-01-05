@@ -9,8 +9,29 @@ const routes = [
   {
     path: "/profile",
     name: "Profile",
-    component: () => import("../components/Profile.vue")
-  }
+    component: () => import("../views/Profile.vue")
+  },
+  {
+    path: "/topArtists",
+    name: "TopArtists",
+    component: () => import("../views/TopArtists.vue")
+  },
+  {
+    path: "/topTracks",
+    name: "TopTracks",
+    component: () => import("../views/TopTracks.vue")
+  },
+  {
+    path: "/recent",
+    name: "Recent",
+    component: () => import("../views/Recent.vue")
+  },
+  {
+    path: "/playlists",
+    name: "Playlists",
+    component: () => import("../views/Playlists.vue")
+  },
+
 ];
 
 const router = createRouter({

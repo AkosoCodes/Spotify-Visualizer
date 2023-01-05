@@ -5,8 +5,7 @@
   <div v-else class="ml-[120px]">
 
     <Navbar/> 
-    <Profile/>
-
+    <router-view></router-view>
   </div>
 
 
@@ -19,7 +18,7 @@
 
 import Home from './components/Home.vue';
 import Navbar from './components/Navbar.vue';
-import Profile from './components/Profile.vue';
+import Profile from './views/Profile.vue';
 import {ref} from 'vue'
 
 import { useUserStore } from './stores/UserStore.js'
