@@ -5,12 +5,12 @@ import { catchErrors } from '../utils.js'
 import ArtistTile from '../components/ArtistTile.vue'
 
 
+
 export default {
     name: 'Profile',
     setup() {
         const store = useUserStore();
         const { profile, playlists, topArtists } = storeToRefs(store);
-
         return {
             store,
             profile,
@@ -47,11 +47,14 @@ export default {
             </li>
 
         </ul>
+
+        <button class="bg-accent w-full h-[50px] rounded-full my-5 hover:bg-test" @click="logout">
+            <span class="bg-inherit text-[25px] text-white">Logout</span>
+        </button>
+
     </div>
 
-    <ArtistTile></ArtistTile>
+    <ArtistTile :artists="topArtists.items"></ArtistTile>
 
-
-    <button @click="logout">Log out</button>
 
 </template>
