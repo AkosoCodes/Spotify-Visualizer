@@ -2,23 +2,29 @@
 import { useUserStore } from '../stores/UserStore.js'
 import { storeToRefs } from 'pinia'
 import { catchErrors } from '../utils.js'
+import ArtistTile from '../components/ArtistTile.vue'
+
 
 export default {
     name: 'Profile',
     setup() {
         const store = useUserStore();
-        const { profile, playlists } = storeToRefs(store);
+        const { profile, playlists, topArtists } = storeToRefs(store);
 
         return {
             store,
             profile,
             playlists,
+            topArtists,
         }
     },
     methods: {
         logout() {
             this.store.logoutUser();
         },
+    },
+    components: {
+        ArtistTile,
     },
 }
 
@@ -42,6 +48,9 @@ export default {
 
         </ul>
     </div>
+
+    <ArtistTile></ArtistTile>
+
 
     <button @click="logout">Log out</button>
 
