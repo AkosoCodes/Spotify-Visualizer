@@ -24,24 +24,31 @@ export default {
 </script>
 
 <template>
-    <div class="ml-[50px]">
+    <div class="ml-[50px] w-[600px]">
 
-        <router-link to="/topArtists">
-            <h1 class="p-2 text-[30px] hover:text-accent">Top Artists...</h1>
-        </router-link>
+        <div class="flex align-center justify-between">
+            <h1 class="my-auto text-[30px] h-[40px]">Top Artists...</h1>
+
+            <router-link to="/topArtists">
+                <button class="border-white border-2 w-[130px]  h-[40px] rounded-full my-5 mx-auto hover:bg-accent hover:border-accent text-[18px] text-white hover:text-white" @click="logout">
+                    See more...
+                </button>
+            </router-link>
+        </div>
+
         <ul>
-            <li class="flex w-[500px] p-2" v-for="(artist, index) in artists.splice(0, 10)" :key="artist.id">
+            <li class="flex w-[600px] p-2" v-for="(artist, index) in artists.splice(0, 10)" :key="artist.id">
                 <a href="https://www.google.com">
 
                     <div class="flex" @mouseover="activateFilter(index)" @mouseleave="deactivateFilter(index)">
 
                         <div ref="filters"
-                        class="w-[75px] h-[75px] my-auto bg-black absolute rounded-full opacity-0">
+                        class="w-[60px] h-[60px] my-auto bg-black absolute rounded-full opacity-0">
                         </div>
-                        <img class="w-[75px] h-[75px] my-auto object-cover object-center rounded-full"
+                        <img class="w-[60px] h-[60px] my-auto object-cover object-center rounded-full"
                             :src="artist.images[0].url" alt="artist image">
 
-                        <h1 class="my-auto mx-5 text-[30px] hover:underline">{{ artist.name }}</h1>
+                        <h1 class="my-auto mx-5 text-[20px] hover:underline">{{ artist.name }}</h1>
                     </div>
                 </a>
             </li>
@@ -49,5 +56,6 @@ export default {
 
 
     </div>
+    
 
 </template>

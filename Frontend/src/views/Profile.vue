@@ -32,8 +32,8 @@ export default {
 
 <template>
 
-    <div class="w-[250px] mx-auto mt-[50px]" v-if="profile !== undefined">
-        <img class="rounded-full shadow-circle w-[250px]" :src="profile.images[0].url" v-if="profile.images !== undefined" alt="profile picture">
+    <div class="flex flex-col w-[250px] mx-auto mt-[50px]" v-if="profile !== undefined">
+        <img class="rounded-full shadow-circle w-[180px] mx-auto" :src="profile.images[0].url" v-if="profile.images !== undefined" alt="profile picture">
         <h1 class="text-center hover:text-accent cursor-pointer"><a id="bold" :href="profile.href">{{profile.display_name}}</a></h1>
 
         <ul class="flex justify-center">
@@ -48,8 +48,8 @@ export default {
 
         </ul>
 
-        <button class="bg-accent w-full h-[50px] rounded-full my-5 hover:bg-test" @click="logout">
-            <span class="bg-inherit text-[25px] text-white">Logout</span>
+        <button class="border-white border-2 w-[180px]  h-[40px] rounded-full my-5 mx-auto hover:bg-accent hover:border-accent text-[18px] text-white hover:text-white font-bold" @click="logout">
+            LOGOUT
         </button>
 
     </div>
