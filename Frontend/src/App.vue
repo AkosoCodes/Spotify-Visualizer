@@ -8,7 +8,7 @@
     <router-view></router-view>
   </div>
 
-
+  
 
   
 
@@ -31,18 +31,19 @@ export default {
   setup() {
 
     const store = useUserStore();
-    const { token, profile, playlists } = storeToRefs(store);
+    const { token, profile, topArtists } = storeToRefs(store);
 
     let status = store.isLoggedIn;
 
-    if(token){
+    if(status){
       catchErrors(store.fetchProfile());
     }
-    console.log("This is the token:", token)
+
+    // console log the profile 
 
     return {
       profile,
-      playlists,
+      topArtists,
       store,
       status,
     }

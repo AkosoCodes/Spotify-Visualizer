@@ -3,7 +3,7 @@ import { useUserStore } from '../stores/UserStore.js'
 import { storeToRefs } from 'pinia'
 import { catchErrors } from '../utils.js'
 import ArtistTile from '../components/ArtistTile.vue'
-
+import App from '../App.vue'
 
 
 export default {
@@ -54,7 +54,7 @@ export default {
 
     </div>
 
-    <ArtistTile :artists="topArtists.items"></ArtistTile>
+    <ArtistTile :artists="topArtists.items" :compact="true"></ArtistTile>
 
 
 </template>

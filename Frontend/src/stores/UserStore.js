@@ -41,7 +41,6 @@ export const useUserStore = defineStore('UserStore', {
 
             const userTopArtist = await getTopArtistsShort();
             this.topArtists = userTopArtist.data;
-            
         },
     }
 

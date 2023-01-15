@@ -1,11 +1,23 @@
 <script>
 
+
 export default {
     name: "ArtistTile",
+    setup(props) {
+        const topTenArtists = props.artists.slice(0, 10);
+        return {
+            topTenArtists,
+        }
+    },
     props: {
         artists: {
             type: Array,
             required: true,
+        },
+        compact: {
+            type: Boolean,
+            required: false,
+            default: false,
         },
     },
     methods: {
@@ -24,20 +36,20 @@ export default {
 </script>
 
 <template>
-    <div class="ml-[50px] w-[600px]">
+    <div v-if="compact" class="ml-[50px] w-[600px]">
 
         <div class="flex align-center justify-between">
             <h1 class="my-auto text-[30px] h-[40px]">Top Artists...</h1>
 
             <router-link to="/topArtists">
-                <button class="border-white border-2 w-[130px]  h-[40px] rounded-full my-5 mx-auto hover:bg-accent hover:border-accent text-[18px] text-white hover:text-white" @click="logout">
+                <button class="border-white border-2 w-[130px]  h-[40px] rounded-full my-5 mx-auto hover:bg-accent hover:border-accent text-[18px] text-white hover:text-white">
                     See more...
                 </button>
             </router-link>
         </div>
 
         <ul>
-            <li class="flex w-[600px] p-2" v-for="(artist, index) in artists.splice(0, 10)" :key="artist.id">
+            <li class="flex w-[600px] p-2" v-for="(artist, index) in topTenArtists" :key="artist.id">
                 <a href="https://www.google.com">
 
                     <div class="flex" @mouseover="activateFilter(index)" @mouseleave="deactivateFilter(index)">
@@ -57,5 +69,16 @@ export default {
 
     </div>
     
+    <div v-else class="m-[50px]  bg-test">
+
+        <h1>Top Artists</h1>
+    
+        <div class="w-[360px] my-[20px] flex flex-row justify-between">
+          <button class="text-gray text-[18px] w-[100px] hover:text-white" >All Time</button>
+          <button class="text-gray text-[18px] w-[120px] hover:text-white" >Last 6 Months</button>
+          <button class="text-gray text-[18px] w-[100px] hover:text-white" >Last Month</button> 
+        </div>
+    
+    </div>
 
 </template>
