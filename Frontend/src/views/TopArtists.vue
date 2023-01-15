@@ -11,18 +11,18 @@ export default {
         Profile,
     },
     setup() {
-       const store = useUserStore();
+        const store = useUserStore();
 
-       const { topArtists } = storeToRefs(store);
+        const { topArtists } = storeToRefs(store);
 
-       return {
-           topArtists,
-       }
+        return {
+            topArtists,
+        }
     },
 }
 </script>
 <template>
-    
-    
+
+
     <ArtistTile :artists="topArtists.items"></ArtistTile>
 </template>
