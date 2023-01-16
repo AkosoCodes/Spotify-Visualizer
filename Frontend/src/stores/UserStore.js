@@ -8,7 +8,9 @@ let isLoggedIn = accessToken ? true : false;
 let token = accessToken;
 let profile = await getCurrentUserProfile;
 let playlists = await getCurrentUserPlaylists;
-let topArtists = await getTopArtistsShort;
+let topArtistsShort = await getTopArtistsShort;
+let topArtistsMedium = await getTopArtistsMedium;
+let topArtistsLong = await getTopArtistsLong;
 
 export const useUserStore = defineStore('UserStore', {
 
@@ -18,7 +20,9 @@ export const useUserStore = defineStore('UserStore', {
             token: token,
             playlists: playlists,
             isLoggedIn: isLoggedIn,
-            topArtists: topArtists,
+            topArtistsShort: topArtistsShort,
+            topArtistsMedium: topArtistsMedium,
+            topArtistsLong: topArtistsLong,
         }
     },
     getters: {
@@ -39,8 +43,16 @@ export const useUserStore = defineStore('UserStore', {
             const userPlaylist = await getCurrentUserPlaylists();
             this.playlists = userPlaylist.data; 
 
-            const userTopArtist = await getTopArtistsShort();
-            this.topArtists = userTopArtist.data;
+            const userTopArtistShort = await getTopArtistsShort();
+            this.topArtistsShort = userTopArtistShort.data;
+
+            const userTopArtistMedium = await getTopArtistsMedium();
+            this.topArtistsMedium = userTopArtistMedium.data;
+
+            const userTopArtistLong = await getTopArtistsLong();
+            this.topArtistsLong = userTopArtistLong.data;
+
+            
         },
     }
 

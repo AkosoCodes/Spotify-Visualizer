@@ -10,12 +10,12 @@ export default {
     name: 'Profile',
     setup() {
         const store = useUserStore();
-        const { profile, playlists, topArtists } = storeToRefs(store);
+        const { profile, playlists, topArtistsShort } = storeToRefs(store);
         return {
             store,
             profile,
             playlists,
-            topArtists,
+            topArtistsShort,
         }
     },
     methods: {
@@ -59,7 +59,7 @@ export default {
 
     </div>
 
-    <ArtistTile :artists="topArtists.items" :compact="true"></ArtistTile>
+    <ArtistTile :artists="topArtistsShort.items" :compact="true"></ArtistTile>
 
 
 </template>

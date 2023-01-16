@@ -1,5 +1,13 @@
 <script>
 
+export default {
+    name: 'Navbar',
+    data() {
+        return {
+            activeSection: 'profile',
+        }
+    }
+}
 </script>
 
 <template>
@@ -18,7 +26,11 @@
         <ul class="flex flex-col">
 
             <!-- Profile -->
-            <li class="bg-black h-[70px] w-full text-center flex flex-col justify-center text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent">
+            <li v-bind:class="{
+                'bg-accent text-white fill-white':activeSection === 'profile',
+                'bg-black text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent':activeSection !== 'profile',
+                'h-[70px] w-full text-center flex flex-col justify-center':true}"
+            >
 
                 <router-link to="/profile" custom v-slot="{ navigate }">
                     <button class="bg-inherit" @click="navigate" role="link">
@@ -38,7 +50,10 @@
             </li>
 
             <!-- Top Artists -->
-            <li class="bg-black h-[70px] w-full text-center flex flex-col justify-center text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent">
+            <li v-bind:class="{
+                'bg-accent text-white fill-white':activeSection === 'topArtists',
+                'bg-black text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent':activeSection !== 'topArtists',
+                'h-[70px] w-full text-center flex flex-col justify-center':true}">
                 <router-link to="/topArtists" custom v-slot="{ navigate }">
                     <button class="bg-inherit" @click="navigate" role="link">
                         <div class="mx-auto my-auto bg-inherit text-sm">
@@ -64,8 +79,10 @@
             </li>
 
             <!-- Top Tracks -->
-            <li
-                class="bg-black h-[70px] w-full text-center flex flex-col justify-center text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent">
+            <li v-bind:class="{
+                'bg-accent text-white fill-white':activeSection === 'topTracks',
+                'bg-black text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent':activeSection !== 'topTracks',
+                'h-[70px] w-full text-center flex flex-col justify-center':true}">
                 <router-link to="/topTracks" custom v-slot="{ navigate }">
                     <button class="bg-inherit" @click="navigate" role="link">
                         <div class="mx-auto my-auto bg-inherit text-sm">
@@ -86,8 +103,10 @@
             </li>
 
             <!-- Playlists -->
-            <li
-                class="bg-black h-[70px] w-full text-center flex flex-col justify-center text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent">
+            <li v-bind:class="{
+                'bg-accent text-white fill-white':activeSection === 'playlists',
+                'bg-black text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent':activeSection !== 'playlists',
+                'h-[70px] w-full text-center flex flex-col justify-center':true}">
                 <router-link to="/playlists" custom v-slot="{ navigate }">
                     <button class="bg-inherit" @click="navigate" role="link">
                         <div class="mx-auto my-auto bg-inherit text-sm">
@@ -109,8 +128,10 @@
             </li>
 
             <!-- Recent -->
-            <li
-                class="bg-black h-[70px] w-full text-center flex flex-col justify-center text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent">
+            <li v-bind:class="{
+                'bg-accent text-white fill-white':activeSection === 'recent',
+                'bg-black text-gray fill-gray hover:text-white hover:fill-white hover:bg-accent':activeSection !== 'recent',
+                'h-[70px] w-full text-center flex flex-col justify-center':true}">
                 <router-link to="/recent" custom v-slot="{ navigate }">
                     <button class="bg-inherit" @click="navigate" role="link">
                         <div class="mx-auto my-auto bg-inherit text-sm">

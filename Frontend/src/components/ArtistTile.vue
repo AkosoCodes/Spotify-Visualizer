@@ -4,9 +4,9 @@
 export default {
     name: "ArtistTile",
     setup(props) {
-        const topTenArtists = props.artists.slice(0, 10);
+        const topFiveArtists = props.artists.slice(0, 5);
         return {
-            topTenArtists,
+            topFiveArtists,
         }
     },
     props: {
@@ -30,11 +30,6 @@ export default {
             this.$refs.filters[index].classList.add('opacity-0')
 
         }
-    },
-    data() {
-        return {
-            selectedOption: 'all_time',
-        }
     }
 }
 
@@ -55,7 +50,7 @@ export default {
         </div>
 
         <ul>
-            <li class="flex w-[600px] p-2" v-for="(artist, index) in topTenArtists" :key="artist.id">
+            <li class="flex w-[600px] p-2" v-for="(artist, index) in topFiveArtists" :key="artist.id">
                 <a href="https://www.google.com">
 
                     <div class="flex" @mouseover="activateFilter(index)" @mouseleave="deactivateFilter(index)">
@@ -76,29 +71,8 @@ export default {
 
     <div v-else class="m-[50px] ">
 
-        <div class="flex justify-between">
-            <h1>Top Artists</h1>
-
-            <div class="w-[360px] my-[20px] flex flex-row justify-between">
-                <button
-                    v-bind:class="{ 'text-white ': selectedOption === 'all_time', ' text-[18px] w-[120px] hover:text-white': true, 'border-b-accent border-b-4': selectedOption === 'all_time', 'border-b-gray border-b-4 text-gray': selectedOption !== 'all_time' }"
-                    @click="selectedOption = 'all_time'">All Time
-                </button>
-                <button
-                    v-bind:class="{ 'text-white ': selectedOption === 'last_6_months', ' text-[18px] w-[120px] hover:text-white': true, 'border-b-accent border-b-4': selectedOption === 'last_6_months', 'border-b-gray border-b-4 text-gray': selectedOption !== 'last_6_months' }"
-                    @click="selectedOption = 'last_6_months'">Last 6 Months
-                </button>
-                <button
-                    v-bind:class="{ 'text-white ': selectedOption === 'last_month', ' text-[18px] w-[120px] hover:text-white': true, 'border-b-accent border-b-4': selectedOption === 'last_month', 'border-b-gray border-b-4 text-gray': selectedOption !== 'last_month' }"
-                    @click="selectedOption = 'last_month'">Last Month
-                </button>
-    
-            </div>
-        </div>
-
-
         <ul class="flex flex-wrap justify-between">
-            <li class="m-[20px] flex flex-col" v-for="(artist, index) in topTenArtists" :key="artist.id">
+            <li class="m-[20px] flex flex-col" v-for="(artist, index) in artists" :key="artist.id">
 
                 <div class="flex" @mouseover="activateFilter(index)" @mouseleave="deactivateFilter(index)">
                     <div ref="filters" class="w-[200px] h-[200px] my-auto bg-black absolute rounded-full opacity-0 flex justify-center align-middle">
