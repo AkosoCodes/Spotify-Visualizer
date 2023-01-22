@@ -31,7 +31,7 @@ export default {
   setup() {
 
     const store = useUserStore();
-    const { token, profile, topArtists } = storeToRefs(store);
+    const { token, profile, topArtists, topTracksShort } = storeToRefs(store);
 
     let status = store.isLoggedIn;
 
@@ -44,6 +44,7 @@ export default {
     return {
       profile,
       topArtists,
+      topTracksShort,
       store,
       status,
     }

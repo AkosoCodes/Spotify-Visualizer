@@ -36,7 +36,7 @@ export default {
 </script>
 
 <template>
-    <div v-if="compact" class="ml-[50px] w-[600px]">
+    <div v-if="compact" class=" w-[500px]">
 
         <div class="flex align-center justify-between">
             <h1 class="my-auto text-[30px] h-[40px]">Top Artists...</h1>

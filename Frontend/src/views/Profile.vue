@@ -3,6 +3,7 @@ import { useUserStore } from '../stores/UserStore.js'
 import { storeToRefs } from 'pinia'
 import { catchErrors } from '../utils.js'
 import ArtistTile from '../components/ArtistTile.vue'
+import TrackTile from '../components/TrackTile.vue'
 import App from '../App.vue'
 
 
@@ -10,12 +11,13 @@ export default {
     name: 'Profile',
     setup() {
         const store = useUserStore();
-        const { profile, playlists, topArtistsShort } = storeToRefs(store);
+        const { profile, playlists, topArtistsShort, topTracksShort} = storeToRefs(store);
         return {
             store,
             profile,
             playlists,
             topArtistsShort,
+            topTracksShort
         }
     },
     methods: {
@@ -25,6 +27,7 @@ export default {
     },
     components: {
         ArtistTile,
+        TrackTile,
     },
 }
 
@@ -59,7 +62,11 @@ export default {
 
     </div>
 
-    <ArtistTile :artists="topArtistsShort.items" :compact="true"></ArtistTile>
+    <div class="flex justify-around">
+        <ArtistTile :artists="topArtistsShort.items" :compact="true"></ArtistTile>
+
+        <TrackTile :tracks="topTracksShort.items" :compact="true"></TrackTile>
+    </div>
 
 
 </template>
