@@ -1,5 +1,7 @@
 <script>
 
+import {formatDuration} from '../utils.js'
+
 export default {
     name: "TrackTile",
     setup(props){
@@ -20,6 +22,7 @@ export default {
             type: Boolean,
             required: false,
             default: false,
+        },
     },
     methods: {
         activateFilter(index) {
@@ -30,8 +33,8 @@ export default {
             this.$refs.filters[index].classList.remove('opacity-75')
             this.$refs.filters[index].classList.add('opacity-0')
 
-        }
-    }
+        },
+        formatDuration,
     }
 }
 </script>
@@ -76,9 +79,9 @@ export default {
 
     </div>
 
-    <div v-else class="m-[50px]">
+    <div v-else class="m-[50px] mr-[50px] ">
         <ul class="flex flex-wrap">
-            <li class="flex w-[1000px] p-3" v-for="(track, index) in tracks" :key="track.id">
+            <li class="flex justify-between w-[100%] p-3 " v-for="(track, index) in tracks" :key="track.id">
                 <a href="https://www.google.com">
 
                     <div class="flex" @mouseover="activateFilter(index)" @mouseleave="deactivateFilter(index)">
@@ -98,6 +101,8 @@ export default {
                         
                     </div>
                 </a>
+
+                <div class="my-auto mr-0 text-gray text-[20px]">{{formatDuration(track.duration_ms)}}</div>
             </li>
         </ul>
     </div>

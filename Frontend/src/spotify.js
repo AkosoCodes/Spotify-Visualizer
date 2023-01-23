@@ -142,3 +142,12 @@ export const getTopArtistsMedium = (time_range = 'medium_term') => {
 export const getTopArtistsLong = (time_range = 'long_term') => {
     return axios.get(`/me/top/artists?time_range=${time_range}`);
 };
+export const getTopTracksShort = (time_range = 'short_term') => {
+    return axios.get(`/me/top/tracks?time_range=${time_range}`);
+};
+export const getTopTracksMedium = (time_range = 'medium_term') => {
+    return axios.get(`/me/top/tracks?time_range=${time_range}`);
+};
+export const getTopTracksLong = (time_range = 'long_term') => {
+    return axios.get(`/me/top/tracks?time_range=${time_range}`);
+};

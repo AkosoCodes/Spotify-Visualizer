@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-import { accessToken, logout, getCurrentUserProfile, getCurrentUserPlaylists, getTopArtistsLong, getTopArtistsMedium, getTopArtistsShort, getTopTracksShort, getTopTracksLong, getTopTracksMedium} from '../spotify.js'
+import { accessToken, logout, getCurrentUserProfile, getCurrentUserPlaylists, getTopArtistsLong, getTopArtistsMedium, getTopArtistsShort, getTopTracksShort, getTopTracksLong, getTopTracksMedium } from '../spotify.js'
 import { catchErrors } from '../utils.js'
 
 let isLoggedIn = accessToken ? true : false;
