@@ -1,10 +1,11 @@
 <script>
 export default {
-    name: 'Recent',
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: 'Recent',
 }
 </script>
 <template>
-    <div>
-        Recent
-    </div>
+  <div>
+    Recent
+  </div>
 </template>

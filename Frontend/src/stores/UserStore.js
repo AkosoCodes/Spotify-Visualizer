@@ -20,58 +20,58 @@ let topTracksLong = await getTopTracksLong;
 
 export const useUserStore = defineStore('UserStore', {
 
-    state: () => {
-        return {
-            profile: profile,
-            token: token,
-            playlists: playlists,
-            isLoggedIn: isLoggedIn,
-            topArtistsShort: topArtistsShort,
-            topArtistsMedium: topArtistsMedium,
-            topArtistsLong: topArtistsLong,
-            topTracksShort: topTracksShort,
-            topTracksMedium: topTracksMedium,
-            topTracksLong: topTracksLong,
-        }
+  state: () => {
+    return {
+      profile: profile,
+      token: token,
+      playlists: playlists,
+      isLoggedIn: isLoggedIn,
+      topArtistsShort: topArtistsShort,
+      topArtistsMedium: topArtistsMedium,
+      topArtistsLong: topArtistsLong,
+      topTracksShort: topTracksShort,
+      topTracksMedium: topTracksMedium,
+      topTracksLong: topTracksLong,
+    }
+  },
+  getters: {
+
+
+  },
+  actions: {
+
+    logoutUser(){
+      logout();
+      this.token = null;
     },
-    getters: {
 
+    async fetchProfile(){
+      const userProfile = await getCurrentUserProfile();
+      this.profile = userProfile.data;
 
-    },
-    actions: {
+      const userPlaylist = await getCurrentUserPlaylists();
+      this.playlists = userPlaylist.data; 
 
-        logoutUser(){
-            logout();
-            this.token = null;
-        },
+      const userTopArtistShort = await getTopArtistsShort();
+      this.topArtistsShort = userTopArtistShort.data;
 
-        async fetchProfile(){
-            const userProfile = await getCurrentUserProfile();
-            this.profile = userProfile.data;
+      const userTopArtistMedium = await getTopArtistsMedium();
+      this.topArtistsMedium = userTopArtistMedium.data;
 
-            const userPlaylist = await getCurrentUserPlaylists();
-            this.playlists = userPlaylist.data; 
+      const userTopArtistLong = await getTopArtistsLong();
+      this.topArtistsLong = userTopArtistLong.data;
 
-            const userTopArtistShort = await getTopArtistsShort();
-            this.topArtistsShort = userTopArtistShort.data;
+      const userTopTracksShort = await getTopTracksShort();
+      this.topTracksShort = userTopTracksShort.data;
 
-            const userTopArtistMedium = await getTopArtistsMedium();
-            this.topArtistsMedium = userTopArtistMedium.data;
+      const userTopTracksMedium = await getTopTracksMedium();
+      this.topTracksMedium = userTopTracksMedium.data;
 
-            const userTopArtistLong = await getTopArtistsLong();
-            this.topArtistsLong = userTopArtistLong.data;
-
-            const userTopTracksShort = await getTopTracksShort();
-            this.topTracksShort = userTopTracksShort.data;
-
-            const userTopTracksMedium = await getTopTracksMedium();
-            this.topTracksMedium = userTopTracksMedium.data;
-
-            const userTopTracksLong = await getTopTracksLong();
-            this.topTracksLong = userTopTracksLong.data;
+      const userTopTracksLong = await getTopTracksLong();
+      this.topTracksLong = userTopTracksLong.data;
 
             
-        },
-    }
+    },
+  }
 
 })

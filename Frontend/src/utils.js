@@ -4,12 +4,12 @@
  * @returns {function}
  */
 export const catchErrors = fn => {
-    return function(...args) {
-      return fn(...args).catch((err) => {
-        console.error(err);
-      })
-    }
+  return function(...args) {
+    return fn(...args).catch((err) => {
+      console.error(err);
+    })
   }
+}
 
 export function formatDuration(ms){
   const minutes = Math.floor(ms / 60000);

@@ -1,24 +1,19 @@
 <template>
+  <Home v-if="!status" />
 
-  <Home v-if="!status"></Home>
-
-  <div v-else class="ml-[120px]">
-
-    <Navbar/> 
-    <router-view></router-view>
+  <div
+    v-else
+    class="ml-[120px]"
+  >
+    <Navbar /> 
+    <router-view />
   </div>
-
-  
-
-  
-
 </template>
 
 <script>
 
 import Home from './components/Home.vue';
 import Navbar from './components/Navbar.vue';
-import Profile from './views/Profile.vue';
 import {ref} from 'vue'
 
 import { useUserStore } from './stores/UserStore.js'
@@ -28,6 +23,10 @@ import { catchErrors } from './utils.js'
 
 export default {
   name: 'App',
+  components: {
+    Home,
+    Navbar,
+  },
   setup() {
 
     const store = useUserStore();
@@ -53,11 +52,6 @@ export default {
     logout() {
       this.store.logoutUser();
     },
-  },
-  components: {
-    Home,
-    Navbar,
-    Profile,
   },
 }
 
