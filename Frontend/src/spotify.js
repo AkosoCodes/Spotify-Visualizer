@@ -48,6 +48,7 @@ const getAccessToken = () => {
     // Set timestamp
     window.localStorage.setItem(LOCAL_STORAGE_KEYS.timestamp, Date.now());
 
+
     // Return access token from query params
     return queryParams[LOCAL_STORAGE_KEYS.accessToken];
   }

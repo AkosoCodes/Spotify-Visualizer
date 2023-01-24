@@ -36,9 +36,8 @@ export default {
 
     if(status){
       catchErrors(store.fetchProfile());
+      
     }
-
-    // console log the profile 
 
     return {
       profile,

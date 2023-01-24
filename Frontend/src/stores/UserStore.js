@@ -70,7 +70,6 @@ export const useUserStore = defineStore('UserStore', {
       const userTopTracksLong = await getTopTracksLong();
       this.topTracksLong = userTopTracksLong.data;
 
-            
     },
   }
 

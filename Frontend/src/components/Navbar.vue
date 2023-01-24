@@ -7,7 +7,10 @@ export default {
     return {
       activeSection: 'profile',
     }
-  }
+  },
+  mounted() {
+    this.$router.push('/profile');
+  },
 }
 </script>
 
