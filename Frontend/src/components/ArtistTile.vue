@@ -38,23 +38,15 @@ export default {
 <template>
   <div
     v-if="compact"
-    class=" w-[500px]"
+    class=" w-[500px] mt-[30px]"
   >
-    <div class="flex align-center justify-between">
+    <div class="flex align-center justify-center">
       <h1 class="my-auto text-[30px] h-[40px]">
-        Top Artists...
+        Top Artists
       </h1>
-
-      <router-link to="/topArtists">
-        <button
-          class="border-white border-2 w-[130px]  h-[40px] rounded-full my-5 mx-auto hover:bg-accent hover:border-accent text-[18px] text-white hover:text-white"
-        >
-          See more...
-        </button>
-      </router-link>
     </div>
 
-    <ul>
+    <ul class="mt-[30px]">
       <li
         v-for="(artist, index) in topFiveArtists"
         :key="artist.id"
@@ -83,13 +75,24 @@ export default {
         </a>
       </li>
     </ul>
+
+    <router-link
+      to="/topArtists"
+      class="flex justify-center"
+    >
+      <button
+        class="border-white border-2 w-[130px]  h-[40px] rounded-full my-5 mx-auto hover:bg-accent hover:border-accent text-[18px] text-white hover:text-white"
+      >
+        See more...
+      </button>
+    </router-link>
   </div>
 
   <div
     v-else
     class="m-[50px] "
   >
-    <ul class="flex flex-wrap justify-left">
+    <ul class="flex flex-wrap justify-between">
       <li
         v-for="(artist, index) in artists"
         :key="artist.id"

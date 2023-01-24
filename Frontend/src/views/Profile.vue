@@ -4,6 +4,7 @@ import { storeToRefs } from 'pinia'
 import { catchErrors } from '../utils.js'
 import ArtistTile from '../components/ArtistTile.vue'
 import TrackTile from '../components/TrackTile.vue'
+import PlaylistTile from '../components/PlaylistTile.vue'
 import App from '../App.vue'
 
 
@@ -13,6 +14,7 @@ export default {
   components: {
     ArtistTile,
     TrackTile,
+    PlaylistTile,
   },
   setup() {
     const store = useUserStore();
@@ -75,7 +77,7 @@ export default {
       </button>
     </div>
     
-    <div class="flex justify-around ">
+    <div class="flex flex-wrap justify-around ">
       <ArtistTile
         :artists="topArtistsShort.items"
         :compact="true"
@@ -85,6 +87,13 @@ export default {
         :tracks="topTracksShort.items"
         :compact="true"
       />
+
+      <PlaylistTile
+        :playlists="playlists.items"
+        :compact="true"
+      />
     </div>
+
+    <div />
   </div>
 </template>

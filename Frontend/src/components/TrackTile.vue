@@ -42,23 +42,15 @@ export default {
 <template>
   <div
     v-if="compact"
-    class="w-[500px]"
+    class="w-[500px] mt-[30px]"
   >
-    <div class="flex align-center justify-between">
+    <div class="flex align-center justify-center">
       <h1 class="my-auto text-[30px] h-[40px]">
-        Top Tracks...
+        Top Tracks
       </h1>
-
-      <router-link to="/topTracks">
-        <button
-          class="border-white border-2 w-[130px]  h-[40px] rounded-full my-5 mx-auto hover:bg-accent hover:border-accent text-[18px] text-white hover:text-white"
-        >
-          See more...
-        </button>
-      </router-link>
     </div>
 
-    <ul>
+    <ul class="mt-[30px]">
       <li
         v-for="(track, index) in topFiveTracks"
         :key="track.id"
@@ -94,6 +86,17 @@ export default {
         </a>
       </li>
     </ul>
+
+    <router-link
+      to="/topTracks"
+      class="flex justify-center"
+    >
+      <button
+        class="border-white border-2 w-[130px]  h-[40px] rounded-full my-5 mx-auto hover:bg-accent hover:border-accent text-[18px] text-white hover:text-white"
+      >
+        See more...
+      </button>
+    </router-link>
   </div>
 
   <div
