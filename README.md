@@ -3,12 +3,26 @@
 <p align="center">This is a full-stack application that visualizes and provides personalized insights of your Spotify data.</p>
 
 ## 📝 | Table of Contents
-- [📝 | Table of Contents](#--table-of-contents)
-- [🧰 | Languages & Tools <a name="languages_&_tools"></a>](#--languages--tools-)
-- [🏁 | Getting Started <a name="getting_started"></a>](#--getting-started-)
-- [⚖ | License <a name="license"></a>](#--license-)
+- [Media & Demo](#media)
+- [Languages & Tools](#languages_tools)
+- [Getting Started](#getting_started)
+- [License](#license)
 
-## 🧰 | Languages & Tools <a name="languages_&_tools"></a>
+## 📸 | Media & Demo <a name="media"></a>
+
+<h3>Profile:</h3>
+Includes a summary of everything with navigation buttons.<br><br>
+<img src="https://user-images.githubusercontent.com/74971935/235369565-1b00ae9a-f3e3-4035-8c35-34ad34e14db1.gif"><br>
+
+<h3>Top Artists:</h3>
+Shows the most listened artists, that can be sorted by different time frames.<br><br>
+<img src="https://user-images.githubusercontent.com/74971935/235369693-d9f34220-61b7-4dad-9285-463ef4355c6b.gif"><br>
+
+<h3>Top Tracks:</h3>
+Shows the most listened tracks, that can be sorted by different time frames.<br><br>
+<img src="https://user-images.githubusercontent.com/74971935/235369712-b3b1be6d-86c6-482a-b9d6-9e8227e17675.gif"><br>
+
+## 🧰 | Languages & Tools <a name="languages_tools"></a>
 
 For the frontend of this project, Vue and Pinia were chosen as the framework and state management library, respectively. 
 On the backend, NodeJS and Express were utilized, along with the Spotify SDK, to build a scalable and efficient web application.
