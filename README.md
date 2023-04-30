@@ -2,11 +2,13 @@
 
 <p align="center">This is a full-stack application that visualizes and provides personalized insights of your Spotify data.</p>
 
+
 ## 📝 | Table of Contents
 - [Media & Demo](#media)
 - [Languages & Tools](#languages_tools)
 - [Getting Started](#getting_started)
 - [License](#license)
+- [Notice](#notice)
 
 ## 📸 | Media & Demo <a name="media"></a>
 
@@ -55,6 +57,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 NOTICE: If you don't see a login button once executed, clear cache & cookies and/or run it in Incognito.
 
-
 ## ⚖ | License <a name="license"></a>
 This repository is under the [MIT](https://opensource.org/licenses/MIT) license.
+
+## ⚠️ | Notice <a name="notice"></a>
+
+This project is my original work, but it is not fully complete at this time. There are additional functionalities that I would like to explore, but I simply do not have the time to implement them at the moment. Additionally, there are some minor bugs that need to be fixed.
+
+However, I welcome collaboration and contributions from the community to improve this project and take it to the next level. If you are interested in contributing, please feel free to fork the repository and submit pull requests. All contributions are appreciated and will be fully credited.
